@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #E0E0E0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 5px;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+}
+
+header h3 {
+    color: #333333;
+    font-size: 1.2em;
+}
+
+#nav {
+    z-index: 1;
+    background-color: #333333;
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -1000px;
+    display: flex;
+    flex-direction: column;
+    transition-duration: 1s;
+
+}
+
+#nav span {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    width: 25px;
+    margin: 20px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+#nav a {
+    color: #FFFFFF;
+    text-align: end;
+    padding: 20px;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    background-color: #C4C4C4;
+    color: #333333;
+}
+
+#nav.active {
+    right: 0;
+}
+
+
+
+
+article {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+section {
+    margin: 20px 5px;
+    width: 100%;
+    display: flex;
+}
+
+
+
+section h3 {
+    color: black;
+    text-align: center;
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: #888888 1px solid;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+form select,
+form input,
+form button {
+    border-radius: 4px;
+    padding: 10px;
+    color: #888888;
+}
+
+
+form label {
+    margin: 5px 0;
+}
+
+form button {
+    color: #ffff;
+    background-color: #333333;
+    margin: 20px 0;
+
+}
+
+#table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#table div {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 2px;
+}
+
+#table .list {
+    border-bottom: 1px solid #888888;
+    font-size: 0.8em;
+}
+
+#table .list .valor {
+    margin-left: auto;
+}
+
+
+#table .topBottom {
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 1em;
+    border-bottom: 1px solid #888888;
+}
+
+#table .topBottom:last-child {
+    border-top: 1px solid #888888;
+    border-bottom: none;
+    margin-top: 4px;
+}
+
+#table .topBottom #total {
+    display: inline;
+    padding: 0;
+}
+
+#table .topBottom #total div:last-child {
+    font-size: 0.7em;
+    margin-top: -15px;
+    justify-content: end;
+    font-weight: normal;
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 412px) {
+    header .container {
+        padding: 15px 24px;
+    }
+
+    #nav {
+        width: 60%;
+    }
+
+    section {
+        margin: 20px 10px;
+    }
+
+
+    #table div {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    #table .list {
+        font-size: 1em;
+    }
+
+    #table .topBottom {
+        padding: 0 40px;
+    }
+
+    #table .topBottom #total div:last-child {
+        font-size: 0.8em;
+
+    }
+
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+    #nav {
+        width: 40%;
+    }
+
+    section {
+        margin: 20px;
+
+    }
+
+    form {
+        border: #888888 1px solid;
+        border-radius: 4px;
+    }
+
+    form #formContainer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    form div {
+        margin: 0 10px;
+    }
+
+    form div:nth-child(2) {
+        flex-grow: 1;
+    }
+
+    form button {
+        width: 200px;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+}
+
+
+
+@media screen and (min-width: 1024px) {
+
+    main img {
+        display: none;
+    }
+
+    header .container {
+        padding: 20px 0px;
+        justify-content: stretch;
+    }
+
+    header h3 {
+        margin-right: auto;
+        margin-left: 20px;
+        font-size: 1.2em;
+    }
+
+    header .container svg {
+        width: 50px;
+    }
+
+    #nav {
+        z-index: 0;
+        background-color: white;
+        width: auto;
+        height: auto;
+        position: initial;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #nav span {
+        display: none;
+    }
+
+    #nav a {
+        color: #333333;
+        padding: 5px 10px;
+        margin: 10px 0;
+    }
+
+    #nav a:last-child {
+        border-left: 1px solid #979797;
+    }
+
+
+    article {
+        flex-direction: row;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    form #formContainer {
+        flex-direction: column;
+    }
+
+    form div {
+        margin: 0;
+    }
+
+
+    form button {
+        width: 100%;
+    }
+}
