@@ -9,13 +9,12 @@
     <title>Controle Financeiro</title>
 </head>
 <body>
-    <header>
+    <header>        
         <main>
-
             <img src="assents/img/logo.svg" id="logo" alt="Logo NewTab">            
             <h3>Controle Financeiro</h3>
             <img class="modal" src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png" />
-            
+
             <nav>
                 <span class="modal">X</span>
                 <a href="">Cadastro de transações</a>
@@ -26,12 +25,12 @@
 
     <article>
         <section>
-            <form action="">
+            <form onsubmit="enviaForm(); return false">
                 <h3>Nova tansação</h3>
                 <div id="formContainer">
                     <div>
                     <label for="tipoTransacao">Tipo de transação</label>
-                    <select id="tipoTransacao" required>                         
+                    <select id="tipoTransacao" >                         
                         <option value=""></option>
                         <option value="Compra">Compra</option>
                         <option value="Venda">Venda</option>
@@ -39,11 +38,11 @@
                     </div>
                     <div>
                         <label for="nomeMercadoria">Nome da mercadoria</label>
-                        <input type="text" placeholder="Adicione uma mercadoria" id="nomeMercadoria" required>
+                        <input type="text" required placeholder="Adicione uma mercadoria" id="nomeMercadoria" >
                     </div>
                     <div>
                         <label for="valorMercadoria">Valor</label>
-                        <input type="number" placeholder="R$ 0,00" id="valorMercadoria" required>
+                        <input type="number" required placeholder="R$ 0,00" id="valorMercadoria" >
                     </div>
                 </div>                
                 <button type="submit">Adicionar transação</button>
@@ -60,18 +59,6 @@
                     <div class="trasacao">+</div>
                     <div class="conteudo">dksdkskdkskd</div>
                     <div class="valor">R$ 12.999,99</div>
-                </div>
-                
-                <div class="lista">
-                    <div class="trasacao">+</div>
-                    <div class="conteudo">dksdkskdkskd</div>
-                    <div class="valor">R$ 999,99</div>
-                </div>
-                
-                <div class="lista">
-                    <div class="trasacao">+</div>
-                    <div class="conteudo">dksdkskdkskd</div>
-                    <div class="valor">R$ 99,99</div>
                 </div>
 
                 <div class="topBottom">

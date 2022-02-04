@@ -42,7 +42,7 @@ nav {
     right: -1000px;
     display: flex;
     flex-direction: column;
-    transition-duration: 0, 5s;
+    transition-duration: 0.5s;
 
 }
 
@@ -123,6 +123,10 @@ form button {
     border-radius: 4px;
     height: 32px;
     color: #888888;
+}
+
+form select {
+    height: 36px;
 }
 
 
@@ -209,6 +213,10 @@ form button {
 
     #tabela .topBottom {
         padding: 0 10px 0 40px;
+    }
+
+    #tabela .lista {
+        font-size: 16px;
     }
 
 }
@@ -300,6 +308,7 @@ form button {
         color: #333333;
         padding: 0 10px;
         margin: 7px 0;
+
 
     }
 
