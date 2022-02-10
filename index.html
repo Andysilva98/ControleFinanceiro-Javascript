@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <script src="assents/src/index.js" defer></script>    
     <title>Controle Financeiro</title>
 </head>
-<body>
+<body onload="atualizaLista()">
     <header>        
         <main>
             <img src="assents/img/logo.svg" id="logo" alt="Logo NewTab">            
@@ -18,7 +18,7 @@
             <nav>
                 <span class="modal">X</span>
                 <a href="">Cadastro de transações</a>
-                <a href="">Limpar dados</a>
+                <a href="" onclick="limparDados()">Limpar dados</a>
             </nav>
         </main>
     </header>
@@ -42,35 +42,15 @@
                     </div>
                     <div>
                         <label for="valorMercadoria">Valor</label>
-                        <input type="number" required placeholder="R$ 0,00" id="valorMercadoria" >
+                        <input type="text"  placeholder="R$ 0,00" id="valorMercadoria" maxlength="9"  >
                     </div>
                 </div>                
                 <button type="submit">Adicionar transação</button>
             </form>
         </section>
         <section>
-            <div id="tabela">
-                <h3>Extrato de transação</h3>
-                <div class="topBottom">
-                    <div>Mercadoria</div>
-                    <div>Valor</div>
-                </div>
-               <div class="lista">
-                    <div class="trasacao">+</div>
-                    <div class="conteudo">dksdkskdkskd</div>
-                    <div class="valor">R$ 12.999,99</div>
-                </div>
-
-                <div class="topBottom">
-                    <div>Total</div>                    
-                    <div id="total">
-                        <div class="valor">R$ 99,99</div>
-                        <div>[LUCRO]</div>
-                    </div>
-                </div>
-                
-                    
-                
+            <div id="listagem">
+                <h3>Nenhuma trasação cadastrado</h3>           
             </div>
         </section>
     </article> 

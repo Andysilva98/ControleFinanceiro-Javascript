@@ -61,6 +61,7 @@ nav a {
     text-align: end;
     text-decoration: none;
     line-height: 32px;
+    padding-right: 20px;
 
 }
 
@@ -80,15 +81,15 @@ article {
     max-width: 1100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin: 20px auto;
     padding: 0 5px;
-
 }
 
 section {
     width: 100%;
     display: flex;
+    align-items: top;
 }
 
 
@@ -141,53 +142,58 @@ form button {
 
 }
 
-#tabela {
+#listagem {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-#tabela div {
+#listagem div {
     display: flex;
     flex-direction: row;
     padding: 10px 2px;
+    min-width: 10px;
 }
 
-#tabela .lista {
+#listagem .lista {
     border-bottom: 1px solid #888888;
     font-size: 14px;
 }
 
-#tabela .lista .valor {
+#listagem .lista .valor {
     margin-left: auto;
 }
 
+#listagem .lista #transacao {
+    width: 50px;
+}
 
-#tabela .topBottom {
+
+#listagem .listaTilulo {
     font-weight: bold;
     justify-content: space-between;
     padding: 0 10px;
-    font-size: 1em;
     border-bottom: 1px solid #888888;
 }
 
-#tabela .topBottom:last-child {
+#listagem .listaTilulo:last-child {
     border-top: 1px solid #888888;
     border-bottom: none;
     margin-top: 4px;
 }
 
-#tabela .topBottom #total {
+#listagem .listaTilulo #total {
     display: inline;
     padding: 0;
 }
 
-#tabela .topBottom #total div:last-child {
+#listagem .listaTilulo #total div:last-child {
     font-size: 0.7em;
     margin-top: -15px;
     justify-content: end;
     font-weight: normal;
 }
+
 
 
 
@@ -204,18 +210,18 @@ form button {
         padding: 0 20px;
     }
 
-    #tabela div {
+    #listagem div {
         display: flex;
         flex-direction: row;
         padding: 10px;
     }
 
 
-    #tabela .topBottom {
+    #listagem .listaTilulo {
         padding: 0 10px 0 40px;
     }
 
-    #tabela .lista {
+    #listagem .lista {
         font-size: 16px;
     }
 
@@ -319,6 +325,7 @@ form button {
     article {
         flex-direction: row;
         padding: 0;
+        margin-top: 30px;
     }
 
     section:last-child {
@@ -340,5 +347,9 @@ form button {
 
     form button {
         width: 100%;
+    }
+
+    #listagem {
+        padding-top: 20px;
     }
 }
