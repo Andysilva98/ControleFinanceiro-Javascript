@@ -1,7 +1,10 @@
  
 let menuModal = addEventListener('click', modal)
 let formata = document.getElementById('valorMercadoria')
-//formata.addEventListener('keyup', formatarMoeda)
+    formata.addEventListener('keyup', () => {
+    let valor = formata.value
+    formata.value = formatarMoeda(valor)
+})
 
  
 function modal(e) {
@@ -13,46 +16,35 @@ function modal(e) {
 }
 
 
-function enviaForm(e){
-    //e.preventDefault()
+function enviaForm(){
 
     let select = document.getElementById('tipoTransacao');
     let opcaoSelecionada = select.options[select.selectedIndex];
     let nomeMercadoria = document.getElementById('nomeMercadoria')
     let valorMercadoria = document.getElementById('valorMercadoria')
     let dados = JSON.parse(localStorage.getItem("dadosProdutos"))
-    valorMercadoria = valorMercadoria.value.replace(/[^0-9]/g, '')
 
     let valores = {
         transacao: opcaoSelecionada.value,
         mercadoria: nomeMercadoria.value,
-        valor: valorMercadoria
+        valor: valorMercadoria.value.replace(/[^0-9]/g, '')
     }
+
     if(opcaoSelecionada == '') return
     
     if (dados == null) {
         localStorage.setItem('dadosProdutos', [])
         dados = [] 
-    }
-    
-    
-    
+    }  
+        
     dados.push(valores)
     localStorage.setItem('dadosProdutos', JSON.stringify(dados))
     
-    
-   //console.log(opcaoSelecionada)
-   //console.log(opcaoSelecionada.value)
-   //console.log(nomeMercadoria.value)
-   //console.log(valorMercadoria)
-    opcaoSelecionada = ''
-    opcaoSelecionada.value = ''
+    select.value = ''
     nomeMercadoria.value = ''
-    valorMercadoria = ''
-    //nomeMercadoria.value.clear()
-    //valorMercadoria.clear()
+    valorMercadoria.value = ''
 
-    atualizaLista()   
+    atualizaLista() 
 }
 
 
@@ -88,13 +80,11 @@ function atualizaLista() {
             <div class="lista">
                 <div class="trasacao">${(elemento.transacao == 'Compra'? '-' : '+' )}</div>
                 <div class="conteudo">${elemento.mercadoria}</div>
-                <div class="valor">R$ ${valor}</div>
+                <div class="valor">R$ ${formatarMoeda(valor)}</div>
             </div>
         `        
        
     }      
-
-    console.log(valorVenda, valorCompra)
 
     let valorTotal = valorVenda - valorCompra
 
@@ -102,7 +92,7 @@ function atualizaLista() {
         <div class="listaTilulo">
             <div>Total</div>                    
             <div id="total">
-                <div class="valor">R$ ${valorTotal}</div>
+                <div class="valor">R$ ${formatarMoeda(valorTotal)}</div>
                 <div>[${valorTotal >= 0 ? 'LUCRO': 'PREJUÍZO'}]</div>
             </div>
         </div>
@@ -117,30 +107,29 @@ function limparDados() {
 
 
 function formatarMoeda(elemento) {
-        let mascara = document.getElementById('valorMercadoria');
-        let valor = elemento;
+    let valor = elemento + '';
         
-        valor = valor + '';
-        
-        valor = parseInt(valor.replace(/[^-0-9]+/g, ''));
-        valor = valor + '';
-        valor = valor.replace(/([0-9]{2})$/g, ",$1");
-        
-        if (valor.length > 6) {
-            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-        }
-        console.log(valor)
-        
-        mascara.value = valor;
-        if (valor == 'NaN') mascara.value = '';
+    valor = parseInt(valor.replace(/[^-0-9]+/g, ''));
+    valor = valor + '';
+
+    if (valor.length == 1) {            
+        valor = valor.replace(/([0-9]{1})$/g, "0,0$1");
+    }
+    else if (valor.length == 2) {
+        valor = valor.replace(/([0-9]{2})$/g, "0,$1"); 
+    } else if (valor.length >= 3 && valor.length < 6) {
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");             
+    }      
+    else if (valor.length >= 6 ) {
+        valor = valor.replace(/([0-9]{3})([0-9]{2})$/g, ".$1,$2");
+    }
     
-        
+    if (valor == 'NaN') valor = '';
+    
+    return valor        
 }
     
 
-formata.addEventListener('keyup', (e) => {
 
-    let valor = formata.value
-    formatarMoeda(valor)
-})
+
 

@@ -17,7 +17,7 @@
 
             <nav>
                 <span class="modal">X</span>
-                <a href="">Cadastro de transações</a>
+                <a onclick="enviaForm()">Cadastro de transações</a>
                 <a href="" onclick="limparDados()">Limpar dados</a>
             </nav>
         </main>
@@ -42,7 +42,7 @@
                     </div>
                     <div>
                         <label for="valorMercadoria">Valor</label>
-                        <input type="text"  placeholder="R$ 0,00" id="valorMercadoria" maxlength="9"  >
+                        <input type="text"  placeholder="R$ 0,00" id="valorMercadoria" maxlength="10"  >
                     </div>
                 </div>                
                 <button type="submit">Adicionar transação</button>
