@@ -37,9 +37,10 @@ function enviaForm(){
     dados.push(valores)
     localStorage.setItem('dadosProdutos', JSON.stringify(dados))
     
-    
+   
     nomeMercadoria.value = ''
-    valorMercadoria.value = ''
+    document.getElementById('valorMercadoria').value = ''
+    
 
     atualizaLista() 
 }
