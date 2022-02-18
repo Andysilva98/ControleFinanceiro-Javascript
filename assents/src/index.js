@@ -1,36 +1,33 @@
- 
-let menuModal = addEventListener('click', modal)
-let formata = document.getElementById('valorMercadoria')
+ let formata = document.getElementById('valorMercadoria')
     formata.addEventListener('keyup', () => {
     let valor = formata.value
     formata.value = formatarMoeda(valor)
 })
 
  
-function modal(e) {
-    let el = e.target.classList    
-    if (el.contains('modal')) {
-        let nav = document.querySelector('nav')
-        nav.classList.toggle('active')   // toggle cria uma classe no elemento caso ela não exista, caso exista ele remove   
-    }     
+function modal() {
+    let nav = document.querySelector('nav')
+    nav.classList.toggle('active')   // toggle cria uma classe no elemento caso ela não exista, caso exista ele remove     
 }
 
 
 function enviaForm(){
 
-    let select = document.getElementById('tipoTransacao');
-    let opcaoSelecionada = select.options[select.selectedIndex];
+    let opcaoSelecionada = document.getElementById('tipoTransacao')
     let nomeMercadoria = document.getElementById('nomeMercadoria')
     let valorMercadoria = document.getElementById('valorMercadoria')
     let dados = JSON.parse(localStorage.getItem("dadosProdutos"))
 
+    valorMercadoria = valorMercadoria.value.replace(/[^0-9]/g, '')
+
+    if(valorMercadoria == 0) return
+
     let valores = {
         transacao: opcaoSelecionada.value,
         mercadoria: nomeMercadoria.value,
-        valor: valorMercadoria.value.replace(/[^0-9]/g, '')
+        valor: valorMercadoria
     }
 
-    if(opcaoSelecionada == '') return
     
     if (dados == null) {
         localStorage.setItem('dadosProdutos', [])
@@ -87,18 +84,18 @@ function atualizaLista() {
     }      
 
     let valorTotal = valorVenda - valorCompra
-
+    let x = (valorTotal >= 0? '' : '-' )
     listArea.innerHTML += `
         <div class="listaTilulo">
             <div>Total</div>                    
             <div id="total">
-                <div class="valor">R$ ${formatarMoeda(valorTotal)}</div>
+                <div class="valor">R$ ${x}${formatarMoeda(valorTotal)}</div>
                 <div>[${valorTotal >= 0 ? 'LUCRO': 'PREJUÍZO'}]</div>
             </div>
         </div>
     `
 }
-
+atualizaLista()
 
 function limparDados() {
     localStorage.clear();
@@ -108,28 +105,32 @@ function limparDados() {
 
 function formatarMoeda(elemento) {
     let valor = elemento + '';
-        
-    valor = parseInt(valor.replace(/[^-0-9]+/g, ''));
+    
+    valor = parseInt(valor.replace(/[^0-9]+/g, ''));
     valor = valor + '';
-
+    
     if (valor.length == 1) {            
         valor = valor.replace(/([0-9]{1})$/g, "0,0$1");
     }
     else if (valor.length == 2) {
         valor = valor.replace(/([0-9]{2})$/g, "0,$1"); 
-    } else if (valor.length >= 3 && valor.length < 6) {
-        valor = valor.replace(/([0-9]{2})$/g, ",$1");             
-    }      
-    else if (valor.length >= 6 ) {
-        valor = valor.replace(/([0-9]{3})([0-9]{2})$/g, ".$1,$2");
+    } else if (valor.length >2) {
+        valor = valor.replace(/([0-9]{2}$)/g, ",$1");             
     }
     
+    if(valor.length >= 6) {
+         let inicio = valor.slice(0, valor.length -3)
+        let final = valor.slice(valor.length -3, valor.length) 
+
+        inicio =+ inicio
+        inicio = inicio.toLocaleString('pt-br')
+
+        valor = inicio + final
+        console.log(valor)
+    }  
+
     if (valor == 'NaN') valor = '';
     
     return valor        
 }
-    
-
-
-
 
