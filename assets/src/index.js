@@ -37,7 +37,7 @@ function enviaForm(){
     dados.push(valores)
     localStorage.setItem('dadosProdutos', JSON.stringify(dados))
     
-    select.value = ''
+    
     nomeMercadoria.value = ''
     valorMercadoria.value = ''
 
@@ -126,12 +126,10 @@ function formatarMoeda(elemento) {
         inicio = inicio.toLocaleString('pt-br')
 
         valor = inicio + final
-        console.log(valor)
     }  
 
     if (valor == 'NaN') valor = '';
     
     return valor        
 }
-
 
